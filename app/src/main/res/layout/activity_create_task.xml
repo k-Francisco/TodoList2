@@ -22,4 +22,119 @@
 
     </android.support.design.widget.AppBarLayout>
 
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/toolbar_layout"
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp">
+
+    <EditText
+        android:id="@+id/create_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/text_input_border"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:hint="Title" />
+
+    <EditText
+        android:id="@+id/create_desc"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/text_input_border"
+        android:layout_below="@+id/create_title"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:hint="Description"
+        android:inputType="text|textMultiLine"
+        android:gravity="top"/>
+
+
+    <LinearLayout
+        android:id="@+id/create_date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_desc"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="3">
+    <EditText
+        android:id="@+id/create_date"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/text_input_border"
+        android:hint="Date"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:layout_weight="3"/>
+
+        <Button
+            android:id="@+id/set_date"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="Set date"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/create_time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_date_layout"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="3">
+        <EditText
+            android:id="@+id/create_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/text_input_border"
+            android:hint="Time"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="3"/>
+
+        <Button
+            android:id="@+id/set_time"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="set time"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_time_layout"
+        android:text="Add to Todo List"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:onClick="onClick"/>
+
+
+</RelativeLayout>
+
+
+
+
 </RelativeLayout>
