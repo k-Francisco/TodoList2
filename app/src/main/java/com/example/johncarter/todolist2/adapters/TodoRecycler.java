@@ -53,9 +53,11 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
 
 
 
+// MY FUNCTIONS
 
 
 
+// END OF MY FUNCTIONS
 
 
 
@@ -68,7 +70,6 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         holder.taskTitle.setText(mTaskTitle[position]);
         holder.taskDesc.setText(mTaskDesc[position]);
         holder.taskDate.setText(mTaskDate[position]);
@@ -79,7 +80,7 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return mTaskTitle.length;
+        return 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -15,12 +15,14 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 import com.example.johncarter.todolist2.R;
+import com.example.johncarter.todolist2.TodoModel;
 
 import java.util.Calendar;
 
 public class CreateTask extends AppCompatActivity implements View.OnClickListener{
 
     private EditText mTitle, mDesc, mDate, mTime;
+    private String title, desc;
     private Button mSetDate, mSetTime, mAddToDoList;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private DatePicker datepicker;
@@ -108,6 +110,12 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
                     }
                 }, mHour, mMinute, false);
                 timePickerDialog.show();
+                break;
+
+            case R.id.submit:
+                title = mTitle.getText().toString();
+                desc = mDesc.getText().toString();
+                TodoModel todoModel = new TodoModel(title, desc, mDay, mMonth, mYear, mHour, mMinute);
                 break;
 
         }
