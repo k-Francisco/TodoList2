@@ -41,13 +41,8 @@ public class TodoFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new TodoRecycler();
-//        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
         return view;
-    }
-
-    public void setTodos(ArrayList<TodoModel> todoList){
-        this.todos = todoList;
     }
 
     public TodoRecycler getRecycler(){

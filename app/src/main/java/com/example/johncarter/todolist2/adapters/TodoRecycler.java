@@ -60,15 +60,15 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
     }
 
 
-    public void init(){
-        for (int position = 0; position < todoModelList.size(); position++){
-            mTaskTitle[position] = todoModelList.get(position).getTitle();
-            mTaskDesc[position] = todoModelList.get(position).getDescription();
-            mTaskDate[position] = String.valueOf(todoModelList.get(position).getDay()) + "/" + String.valueOf(todoModelList.get(position).getMonth())
-                    + "/" + String.valueOf(todoModelList.get(position).getYear());
-            mTaskTime[position] = String.valueOf(todoModelList.get(position).getHour()) + ":" + String.valueOf(todoModelList.get(position).getMinutes());
-        }
-    }
+//    public void init(){
+//        for (int position = 0; position < todoModelList.size(); position++){
+//            mTaskTitle[position] = todoModelList.get(position).getTitle();
+//            mTaskDesc[position] = todoModelList.get(position).getDescription();
+//            mTaskDate[position] = String.valueOf(todoModelList.get(position).getDay()) + "/" + String.valueOf(todoModelList.get(position).getMonth())
+//                    + "/" + String.valueOf(todoModelList.get(position).getYear());
+//            mTaskTime[position] = String.valueOf(todoModelList.get(position).getHour()) + ":" + String.valueOf(todoModelList.get(position).getMinutes());
+//        }
+//    }
 
 
 // END OF MY FUNCTIONS
@@ -84,12 +84,13 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        init();
-        holder.taskTitle.setText(mTaskTitle[position]);
-        holder.taskDesc.setText(mTaskDesc[position]);
-        holder.taskDate.setText(mTaskDate[position]);
-        holder.taskTime.setText(mTaskTime[position]);
-        holder.taskStatus.setImageResource(mStatus[position]);
+
+        holder.taskTitle.setText(todoModelList.get(position).getTitle());
+        holder.taskDesc.setText(todoModelList.get(position).getDescription());
+        holder.taskDate.setText(String.valueOf(todoModelList.get(position).getDay()) + "/" + String.valueOf(todoModelList.get(position).getMonth())
+                + "/" + String.valueOf(todoModelList.get(position).getYear()));
+        holder.taskTime.setText(String.valueOf(todoModelList.get(position).getHour()) + ":" + String.valueOf(todoModelList.get(position).getMinutes()));
+//        holder.taskStatus.setImageResource(mStatus[position]);
 
     }
 

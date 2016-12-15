@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 TodoModel todoModel = new TodoModel(title, desc, Integer.parseInt(mDay), Integer.parseInt(mMonth),
                         Integer.parseInt(mYear), Integer.parseInt(mHour), Integer.parseInt(mMinute));
                 todos.add(todoModel);
-                todoFragment.setTodos(todos);
+                //todoFragment.setTodos(todos);
                 todoFragment.getRecycler().add(todoModel);
             }
         }
