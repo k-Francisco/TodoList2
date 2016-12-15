@@ -1,8 +1,10 @@
 package com.example.johncarter.todolist2.activities;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +15,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.johncarter.todolist2.R;
-import com.example.johncarter.todolist2.TodoModel;
-
+import com.example.johncarter.todolist2.fragments.TodoFragment;
 import java.util.Calendar;
 
 public class CreateTask extends AppCompatActivity implements View.OnClickListener{
@@ -25,8 +27,9 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
     private String title, desc;
     private Button mSetDate, mSetTime, mAddToDoList;
     private int mYear, mMonth, mDay, mHour, mMinute;
-    private DatePicker datepicker;
     private Calendar calendar;
+    TodoFragment todoFragment;
+    MainActivity mainActivity;
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -39,8 +42,6 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
 
         }
     };
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +116,17 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
             case R.id.submit:
                 title = mTitle.getText().toString();
                 desc = mDesc.getText().toString();
-                TodoModel todoModel = new TodoModel(title, desc, mDay, mMonth, mYear, mHour, mMinute);
+                Intent intent = new Intent();
+                intent.putExtra("title", title);
+                intent.putExtra("desc", desc);
+                intent.putExtra("day", String.valueOf(mDay));
+                intent.putExtra("month", String.valueOf(mMonth));
+                intent.putExtra("year", String.valueOf(mYear));
+                intent.putExtra("hour", String.valueOf(mHour));
+                intent.putExtra("minute", String.valueOf(mMinute));
+                setResult(Activity.RESULT_OK, intent);
+                finish();
+
                 break;
 
         }
@@ -131,5 +142,7 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         }
         return null;
     }
+
+
 
 }

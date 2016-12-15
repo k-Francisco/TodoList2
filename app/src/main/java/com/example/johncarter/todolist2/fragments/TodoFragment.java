@@ -4,12 +4,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.johncarter.todolist2.R;
+import com.example.johncarter.todolist2.TodoModel;
 import com.example.johncarter.todolist2.adapters.TodoRecycler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -19,10 +25,11 @@ public class TodoFragment extends Fragment {
     public TodoFragment() {
     }
 
-
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
+    private ArrayList<TodoModel> todos = new ArrayList<>();
+    private static final String TAG = "hello";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +41,17 @@ public class TodoFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new TodoRecycler();
+//        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
         return view;
     }
+
+    public void setTodos(ArrayList<TodoModel> todoList){
+        this.todos = todoList;
+    }
+
+    public TodoRecycler getRecycler(){
+        return (TodoRecycler) adapter;
+    }
+
 }

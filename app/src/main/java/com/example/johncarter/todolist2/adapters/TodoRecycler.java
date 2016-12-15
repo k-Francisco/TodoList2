@@ -1,13 +1,20 @@
 package com.example.johncarter.todolist2.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.johncarter.todolist2.R;
+import com.example.johncarter.todolist2.TodoModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by john carter on 12/14/2016.
@@ -15,46 +22,53 @@ import com.example.johncarter.todolist2.R;
 
 public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> {
 
+    ArrayList<TodoModel> todoModelList = new ArrayList<>();
+    private static final String TAG = "hello";
+    //Log.v(TAG, "")
+
+//    public TodoRecycler(ArrayList<TodoModel> todoModelList){
+//        this.todoModelList = todoModelList;
+//    }
 
     private String[] mTaskTitle = {
-            "I am the great",
-            "100kg Challenge",
-            "#RoadToHealthyLiving",
-            "#RoadToHealthyLiving"
+
     };
 
     private String[] mTaskDesc = {
-            "Will be going to gym for a fit body and soul",
-            "I dont know what im doing with this body",
-            "For the love of my life, will do everything without a doubt",
-            "For the love of my life, will do everything without a doubt"
+
     };
 
     private int mStatus[] = {
-            R.drawable.ic_bookmark_upcoming,
-            R.drawable.ic_bookmark_upcoming,
-            R.drawable.ic_bookmark_24dp,
-            R.drawable.ic_bookmark_24dp
+
     };
 
     private String[] mTaskDate = {
-            "11/23/2016",
-            "11/19/2016",
-            "11/18/2016",
-            "11/18/2016"
+
     };
 
     private String[] mTaskTime = {
-            "11:13 PM",
-            "11:15 AM",
-            "12:12 AM",
-            "12:12 AM"
+
     };
 
 
 
 // MY FUNCTIONS
 
+    public void add(TodoModel todoModel){
+        todoModelList.add(todoModel);
+        notifyDataSetChanged();
+    }
+
+
+    public void init(){
+        for (int position = 0; position < todoModelList.size(); position++){
+            mTaskTitle[position] = todoModelList.get(position).getTitle();
+            mTaskDesc[position] = todoModelList.get(position).getDescription();
+            mTaskDate[position] = String.valueOf(todoModelList.get(position).getDay()) + "/" + String.valueOf(todoModelList.get(position).getMonth())
+                    + "/" + String.valueOf(todoModelList.get(position).getYear());
+            mTaskTime[position] = String.valueOf(todoModelList.get(position).getHour()) + ":" + String.valueOf(todoModelList.get(position).getMinutes());
+        }
+    }
 
 
 // END OF MY FUNCTIONS
@@ -70,6 +84,7 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        init();
         holder.taskTitle.setText(mTaskTitle[position]);
         holder.taskDesc.setText(mTaskDesc[position]);
         holder.taskDate.setText(mTaskDate[position]);
@@ -80,7 +95,7 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return todoModelList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -96,6 +111,7 @@ public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> 
             taskDate = (TextView) itemView.findViewById(R.id.todo_date);
             taskTime = (TextView) itemView.findViewById(R.id.todo_time);
             taskStatus = (ImageView) itemView.findViewById(R.id.task_status);
+
         }
     }
 }
