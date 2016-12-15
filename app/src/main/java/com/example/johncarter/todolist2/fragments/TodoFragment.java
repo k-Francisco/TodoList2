@@ -28,7 +28,6 @@ public class TodoFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
-    private ArrayList<TodoModel> todos = new ArrayList<>();
     private static final String TAG = "hello";
 
     @Override

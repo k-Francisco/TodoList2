@@ -2,6 +2,7 @@ package com.example.johncarter.todolist2.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.SyncStateContract;
@@ -17,11 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import com.example.johncarter.todolist2.R;
 import com.example.johncarter.todolist2.TodoModel;
 import com.example.johncarter.todolist2.fragments.TodoFragment;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,9 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.plus_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
-
 
 
         fragmentManager = getSupportFragmentManager();
@@ -80,6 +82,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        //Retrieving
+//        SharedPreferences sharedPreferences = getSharedPreferences("todos",0);
+//        Gson gson = new Gson();
+//        String json = sharedPreferences.getString("edited",null);
+//        Type type = new TypeToken<ArrayList<TodoModel>>(){}.getType();
+//        ArrayList<TodoModel> todoList = gson.fromJson(json, type);
+//        if (todoList!= null) {
+//            for (int i = 0; i < todoList.size(); i++) {
+//                String title = todoList.get(i).getTitle();
+//                String desc = todoList.get(i).getDescription();
+//                int mDay = todoList.get(i).getDay();
+//                int mMonth = todoList.get(i).getMonth();
+//                int mYear = todoList.get(i).getYear();
+//                int mHour = todoList.get(i).getHour();
+//                int mMinute = todoList.get(i).getMinutes();
+//                TodoModel todoModel = new TodoModel(title, desc, mDay, mMonth,
+//                        mYear, mHour, mMinute);
+//                todos.add(todoModel);
+//                todoFragment.getRecycler().add(todoModel);
+//            }
+//        }
 
 
     }
@@ -121,9 +144,20 @@ public class MainActivity extends AppCompatActivity {
                 TodoModel todoModel = new TodoModel(title, desc, Integer.parseInt(mDay), Integer.parseInt(mMonth),
                         Integer.parseInt(mYear), Integer.parseInt(mHour), Integer.parseInt(mMinute));
                 todos.add(todoModel);
-                //todoFragment.setTodos(todos);
                 todoFragment.getRecycler().add(todoModel);
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences prefs = getSharedPreferences("todos",0);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(todos);
+        editor.putString("edited",json);
+        editor.commit();
     }
 }
