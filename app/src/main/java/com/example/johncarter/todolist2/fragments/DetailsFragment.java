@@ -20,6 +20,19 @@ public class DetailsFragment extends Fragment{
     public DetailsFragment(){
 
     }
+    static int i = 0;
+    public static DetailsFragment newInstance(int index){
+        DetailsFragment f = new DetailsFragment();
+
+        Bundle arg = new Bundle();
+        arg.putInt("index", index);
+        i = index;
+        f.setArguments(arg);
+
+        return f;
+    }
+
+    public int getShownIndex(){return getArguments().getInt("index", 0);}
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;

@@ -2,12 +2,13 @@ package com.example.johncarter.todolist2.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.SyncStateContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 
 import com.example.johncarter.todolist2.R;
 import com.example.johncarter.todolist2.TodoModel;
+import com.example.johncarter.todolist2.fragments.DetailsFragment;
 import com.example.johncarter.todolist2.fragments.TodoFragment;
 
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 
 

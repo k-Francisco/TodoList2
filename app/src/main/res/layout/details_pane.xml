@@ -5,7 +5,20 @@
 
     <FrameLayout
         android:layout_width="205dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/tits">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.johncarter.todolist2.fragments.TodoFragment"
+            android:id="@+id/titstits" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="384dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right">
 
     </FrameLayout>
 </android.support.design.widget.CoordinatorLayout>
