@@ -23,57 +23,16 @@ import java.util.List;
 public class TodoRecycler extends RecyclerView.Adapter<TodoRecycler.ViewHolder> {
 
     ArrayList<TodoModel> todoModelList = new ArrayList<>();
-    private static final String TAG = "hello";
-    //Log.v(TAG, "")
 
-//    public TodoRecycler(ArrayList<TodoModel> todoModelList){
-//        this.todoModelList = todoModelList;
-//    }
-
-    private String[] mTaskTitle = {
-
-    };
-
-    private String[] mTaskDesc = {
-
-    };
-
-    private int mStatus[] = {
-
-    };
-
-    private String[] mTaskDate = {
-
-    };
-
-    private String[] mTaskTime = {
-
-    };
-
-
-
-// MY FUNCTIONS
 
     public void add(TodoModel todoModel){
-        todoModelList.add(todoModel);
-        notifyDataSetChanged();
+        if(todoModelList != null) {
+            todoModelList.add(todoModel);
+            notifyDataSetChanged();
+        }
+        else
+            todoModelList = new ArrayList<>();
     }
-
-
-//    public void init(){
-//        for (int position = 0; position < todoModelList.size(); position++){
-//            mTaskTitle[position] = todoModelList.get(position).getTitle();
-//            mTaskDesc[position] = todoModelList.get(position).getDescription();
-//            mTaskDate[position] = String.valueOf(todoModelList.get(position).getDay()) + "/" + String.valueOf(todoModelList.get(position).getMonth())
-//                    + "/" + String.valueOf(todoModelList.get(position).getYear());
-//            mTaskTime[position] = String.valueOf(todoModelList.get(position).getHour()) + ":" + String.valueOf(todoModelList.get(position).getMinutes());
-//        }
-//    }
-
-
-// END OF MY FUNCTIONS
-
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

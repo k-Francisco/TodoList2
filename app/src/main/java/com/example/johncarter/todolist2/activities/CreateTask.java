@@ -18,7 +18,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.johncarter.todolist2.R;
-import com.example.johncarter.todolist2.fragments.TodoFragment;
 import java.util.Calendar;
 
 public class CreateTask extends AppCompatActivity implements View.OnClickListener{
@@ -28,8 +27,6 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
     private Button mSetDate, mSetTime, mAddToDoList;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private Calendar calendar;
-    TodoFragment todoFragment;
-    MainActivity mainActivity;
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
